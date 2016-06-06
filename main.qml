@@ -16,23 +16,19 @@ Window {
 
             property var window: PFDialog {
                 id: dialog
-                content: ColumnLayout {
-                    spacing: 0
-                    Layout.fillWidth: true
+                content:
                     Text {
-                        id: text
+                    id: text
 
-                        Component.onCompleted: {
-                            qmlHelpers.SetParent(text, dialog)
-                            console.log("text parent " + parent + " qt parent " + qmlHelpers.GetParent(text))
-                        }
-
-                        Component.onDestruction: {
-                            console.log("destroying text " + text)
-                        }
-
-                        text: "Foobar"
+                    Component.onCompleted: {
+                        console.log("text parent " + parent + " qt parent " + qmlHelpers.GetParent(text))
                     }
+
+                    Component.onDestruction: {
+                        console.log("destroying text " + text)
+                    }
+
+                    text: "Foobar"
                 }
             }
         }

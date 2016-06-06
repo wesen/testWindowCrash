@@ -10,7 +10,16 @@ Window {
         console.log("destroying window " + window)
     }
 
-    Item {
+    Component.onCompleted: {
+        for (var i = 0; i < content.length; i++) {
+            console.log("child " + i + " content " + content[i])
+            qmlHelpers.SetParent(content[i], contentLayout)
+        }
+    }
+
+    ColumnLayout {
+        spacing: 0
+        Layout.fillWidth: true
         id: contentLayout
         Component.onDestruction: {
             console.log("destroying layout " + contentLayout)
