@@ -3,6 +3,8 @@ import QtQuick.Window 2.2
 
 import QtQml.StateMachine 1.0
 
+import QtQuick.Layouts 1.1
+
 Window {
     visible: true
 
@@ -13,18 +15,24 @@ Window {
             id: foobar
 
             property var window: PFDialog {
-                content: Text {
-                    id: text
+                id: dialog
+                content: ColumnLayout {
+                    spacing: 0
+                    Layout.fillWidth: true
+                    Text {
+                        id: text
 
-                    Component.onCompleted: {
-                        console.log("text parent " + parent + " qt parent " + qmlHelpers.GetParent(text))
+                        Component.onCompleted: {
+                            qmlHelpers.SetParent(text, dialog)
+                            console.log("text parent " + parent + " qt parent " + qmlHelpers.GetParent(text))
+                        }
+
+                        Component.onDestruction: {
+                            console.log("destroying text " + text)
+                        }
+
+                        text: "Foobar"
                     }
-
-                    Component.onDestruction: {
-                        console.log("destroying text " + text)
-                    }
-
-                    text: "Foobar"
                 }
             }
         }

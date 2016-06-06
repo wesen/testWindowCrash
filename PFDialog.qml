@@ -10,10 +10,8 @@ Window {
         console.log("destroying window " + window)
     }
 
-    ColumnLayout {
+    Item {
         id: contentLayout
-        spacing: 0
-        Layout.fillWidth: true
         Component.onDestruction: {
             console.log("destroying layout " + contentLayout)
         }

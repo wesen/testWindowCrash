@@ -11,6 +11,7 @@ public:
 
     Q_INVOKABLE QObject *GetThis(QObject *s) { return s; }
     Q_INVOKABLE QObject *GetParent(QObject *s) { return s->parent(); }
+    Q_INVOKABLE void SetParent(QObject *s, QObject *parent) { s->setParent(parent); }
 
 signals:
 
